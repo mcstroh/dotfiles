@@ -44,12 +44,27 @@ export EDITOR="emacs -nw"
 #
 ##########################################################################################
 
+
+
 ##########################################################################################
 #
 # Server connections
 #
 if [ -f "$HOME/dotfiles/servers.sh" ]; then
     . $HOME/dotfiles/servers.sh
+fi
+#
+##########################################################################################
+
+
+
+##########################################################################################
+#
+# Brew package manager
+#    Need to load early due to later dependencies
+#
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 #
 ##########################################################################################
@@ -160,9 +175,9 @@ fi
 # Configure local anaconda installation if it exists
 #
 # By referencing $HOME, this should work for typical local MacOS and Linux installations
-if [ -f "$HOME/../data/anaconda3" ]; then
+if [ -d "$HOME/../data/anaconda3" ]; then
     if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/../data/anaconda3/etc/profile.d/conda.sh"
+        . $HOME/../data/anaconda3/etc/profile.d/conda.sh
         conda activate py39
     else
         export PATH="$HOME/../data/anaconda3/bin:$PATH"
@@ -179,6 +194,19 @@ fi
 #
 if [ -f /projects/b1094/stroh/baade/setup.sh ]; then
     . /projects/b1094/stroh/baade/setup.sh
+fi
+#
+##########################################################################################
+
+
+
+##########################################################################################
+#
+# MacPorts
+#
+if [ -d /opt/local/bin ]; then
+    export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+    export MANPATH="/opt/local/share/man:$MANPATH"
 fi
 #
 ##########################################################################################

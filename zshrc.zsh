@@ -14,7 +14,7 @@ fi
 # iTerm2 shell integration
 #
 if [ -f "$HOME/dotfiles/.iterm2_shell_integration.zsh" ]; then
-    . $HOME/dotfiles/.iterm2_shell_integration.zsh
+    . ${HOME}/dotfiles/.iterm2_shell_integration.zsh
 fi
 
 
@@ -29,17 +29,22 @@ fi
 
 
 
+##########################################################################################
 #
-# Load brew supported packages
+# ZSH plugins/enhancements
 #
-#if [ -x /opt/homebrew/bin/brew ] ; then
-# MacOS with brew
+#     MacOS with brew
+#
 if command -v brew >/dev/null 2>&1
 then  
 
     #
     # ZSH plugins
     #
+
+    if [[ -r /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+        . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+    fi
     
     # ZSH git prompt
     if [ -f /opt/homebrew/opt/zsh-git-prompt/zshrc.sh ]; then
@@ -57,21 +62,22 @@ then
     fi
 
     # ZSH completions
-    if type brew &>/dev/null; then
-        FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-        autoload -Uz compinit
-        compinit
-    fi
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
     
     # Setup p10k
     # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-    [[ ! -f "$HOME/.p10k.zsh" ]] || . $HOME/.p10k.zsh
+    [[ ! -f "$HOME/dotfiles/.p10k.zsh" ]] || . ${HOME}/dotfiles/.p10k.zsh
 
-# Linux box
+#
+#      Linux box
+#
 else
     zstyle :compinstall filename "$HOME/.zshrc"
     autoload -Uz compinit
     compinit
 
 fi
-
+#
+##########################################################################################
