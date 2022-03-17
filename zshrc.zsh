@@ -22,7 +22,7 @@ fi
 #
 # Doom Emacs
 #
-if [ -d "$HOME/.emacs.d/bin"]; then
+if [ -d "$HOME/.emacs.d/bin" ]; then
     path+=('$HOME/.emacs.d/bin') # Add Doom to path
     export EDITOR="emacs -nw"
 fi
