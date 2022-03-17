@@ -87,7 +87,7 @@ fi
 #
 # Exa - used to replace ls
 #
-if command -v exa &> /dev/null
+if command -v exa >/dev/null 2>&1
 then  
     alias ls='exa -al --color=always --group-directories-first' # my preferred listing
     alias la='exa -a --color=always --group-directories-first'  # all files and dirs
@@ -108,7 +108,7 @@ if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
     . $HOME/.config/broot/launcher/bash/br
 fi
 
-if command -v broot &> /dev/null
+if command -v broot >/dev/null 2>&1
 then
     alias br='broot -dhp'
     alias bs='broot --sizes'

@@ -34,7 +34,7 @@ fi
 #
 #if [ -x /opt/homebrew/bin/brew ] ; then
 # MacOS with brew
-if command -v brew &> /dev/null
+if command -v brew >/dev/null 2>&1
 then  
 
     #
