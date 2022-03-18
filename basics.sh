@@ -11,13 +11,6 @@
 
 
 
-# Load Quest default bashrc file
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-
-
-
 # Give us a long history
 set savehist=500000
 set history=500000
