@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 #
 #  __  __   ____     ____  _             _
 # |  \/  | / ___|   / ___|| |_ _ __ ___ | |__
@@ -14,7 +7,7 @@ fi
 #
 #  .default shell file catch-all for BASH/ZSH
 #
-# Last modified: March 16th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
+# Last modified: March 18th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
 #
 #
 
@@ -26,8 +19,8 @@ if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
     . /projects/b1094/software/dotfiles/.bashrc
 
 # If we're not on Quest, run the local version
-elif [ -f "$HOME/dotfiles/bashrc.sh" ]; then
-    . $HOME/dotfiles/bashrc.sh
+elif [ -f "$HOME/dotfiles/basics.sh" ]; then
+    . $HOME/dotfiles/basics.sh
 fi
 #
 ##########################################################################################
@@ -42,11 +35,11 @@ export TERM="xterm-256color" # getting colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 set savehist=500000
 set history=500000
-set histfile=~/dotfiles/.histfile
+#set histfile=$HOME/dotfiles/.histfile
 
 
 # Use EMACS as default text editor
-export EDITOR="emacs -nw"
+export EDITOR="emacs"
 
 #
 ##########################################################################################

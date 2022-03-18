@@ -6,7 +6,7 @@
 #
 # .basics file for shell setup
 #
-# Last modified: March 16th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
+# Last modified: March 18th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
 #
 
 
@@ -32,8 +32,8 @@ alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz
 alias conda_base='conda activate base'
 
 
-# Use Nano as default text editor
-export VISUAL=nano
+# Use Emacs as the default text editor
+export VISUAL=emacs
 export EDITOR="$VISUAL"
 
 
