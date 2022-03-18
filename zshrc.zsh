@@ -64,10 +64,6 @@ if [ "$(uname)"=="Darwin" ] && command -v brew >/dev/null 2>&1; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
     autoload -Uz compinit
     compinit
-    
-    # Setup p10k
-    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-    [[ ! -f "$HOME/dotfiles/.p10k.zsh" ]] || . ${HOME}/dotfiles/.p10k.zsh
 
 #
 #      Linux box
@@ -85,9 +81,11 @@ elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
         . /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
     fi
 
-    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-    [[ ! -f "$HOME/dotfiles/.p10k.zsh" ]] || . ${HOME}/dotfiles/.p10k.zsh
 
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
+[[ ! -f "$HOME/dotfiles/.p10k.zsh" ]] || . ${HOME}/dotfiles/.p10k.zsh
+
 #
 ##########################################################################################
