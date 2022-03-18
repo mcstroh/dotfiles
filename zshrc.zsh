@@ -13,8 +13,8 @@ fi
 #
 # iTerm2 shell integration
 #
-if [ -f "$HOME/dotfiles/.iterm2_shell_integration.zsh" ]; then
-    . ${HOME}/dotfiles/.iterm2_shell_integration.zsh
+if [ "$(uname)"=="Darwin" ] && [ -f "$HOME/dotfiles/.iterm2_shell_integration.zsh" ]; then
+      . ${HOME}/dotfiles/.iterm2_shell_integration.zsh
 fi
 
 
@@ -35,8 +35,7 @@ fi
 #
 #     MacOS with brew
 #
-if command -v brew >/dev/null 2>&1
-then  
+if [ "$(uname)"=="Darwin" ] && command -v brew >/dev/null 2>&1; then
 
     #
     # ZSH plugins
@@ -73,10 +72,21 @@ then
 #
 #      Linux box
 #
-else
-    zstyle :compinstall filename "$HOME/.zshrc"
+elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
+
+    zstyle :compinstall filename "${HOME}/dotfiles/zshrc.zsh"
     autoload -Uz compinit
     compinit
+
+    #
+    # Powerlevel 10k
+    #
+    if [ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]; then
+        . /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+    fi
+
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f "$HOME/dotfiles/.p10k.zsh" ]] || . ${HOME}/dotfiles/.p10k.zsh
 
 fi
 #
