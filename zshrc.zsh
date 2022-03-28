@@ -43,8 +43,8 @@ if [ "$(uname)"=="Darwin" ] && command -v brew >/dev/null 2>&1; then
 
     if [[ -r /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
         . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-    elif [[ -r /user/local/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-        . /user/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+    elif [[ -r /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+        . /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
     fi
     
     # ZSH git prompt
