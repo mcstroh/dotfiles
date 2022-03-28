@@ -41,25 +41,23 @@ if [ "$(uname)"=="Darwin" ] && command -v brew >/dev/null 2>&1; then
     # ZSH plugins
     #
 
-    if [[ -r /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-        . /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-    elif [[ -r /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-        . /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+    if [[ -r $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+        . $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
     fi
     
     # ZSH git prompt
-    if [ -f /opt/homebrew/opt/zsh-git-prompt/zshrc.sh ]; then
-        . /opt/homebrew/opt/zsh-git-prompt/zshrc.sh
+    if [ -r $(brew --prefix)/opt/zsh-git-prompt/zshrc.sh ]; then
+        . $(brew --prefix)/opt/zsh-git-prompt/zshrc.sh
     fi
 
     # ZSH syntax highlighting
-    if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-        . /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    if [ -f $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+        . $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     fi
 
     # ZSH autosuggestions
-    if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-        . /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    if [ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+        . $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     fi
 
     # ZSH completions
