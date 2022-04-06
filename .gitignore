@@ -3,3 +3,6 @@ servers.sh
 
 # History file
 .histfile
+
+# git config
+.gitconfig
