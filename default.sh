@@ -116,10 +116,10 @@ fi
 #
 if command -v exa >/dev/null 2>&1
 then  
-    alias ls='exa -al --color=always --group-directories-first --git --header' # my preferred listing
-    alias la='exa -a --color=always --group-directories-first --git --header'  # all files and dirs
-    alias ll='exa -l --color=always --group-directories-first --git --header'  # long format
-    alias lt='exa -aT --color=always --group-directories-first --git --header' # tree listing
+    alias ls='exa -al --color=always --group-directories-first --header' # Default
+    alias la='exa -a --color=always --group-directories-first --header'  # All but not long
+    alias ll='exa -l --color=always --group-directories-first --header'  # Long but not all
+    alias lt='exa -aT --color=always --group-directories-first --header' # Tree format
     alias l.='exa -a | egrep "^\."'
 fi
 #
