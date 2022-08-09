@@ -227,6 +227,17 @@ fi
 
 ##########################################################################################
 #
+# IDL
+#
+if [ -r /Applications/harris/idl/bin/idl_setup.bash ] ; then
+    . /Applications/harris/idl/bin/idl_setup.bash
+fi
+#
+##########################################################################################
+
+
+##########################################################################################
+#
 # Clean up path if we're in ZSH
 if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
     typeset -U path
