@@ -175,12 +175,19 @@ fi
 # Configure local anaconda installation if it exists
 #
 # By referencing $HOME, this should work for typical local MacOS and Linux installations
-if [ -d "$HOME/../data/anaconda3" ]; then
-    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
-        . $HOME/../data/anaconda3/etc/profile.d/conda.sh
+if [ -d "$HOME/../data/miniconda3" ]; then
+    if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
         conda activate py39
     else
-        export PATH="$HOME/../data/anaconda3/bin:$PATH"
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+elif [ -d "$HOME/../data/anaconda3" ]; then
+    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
+        conda activate py39
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
     fi
 fi
 #
@@ -202,7 +209,7 @@ fi
 
 ##########################################################################################
 #
-# Dooom
+# Doom
 #
 if [ -d "$HOME/.emacs.d/bin" ]; then
     export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -233,4 +240,3 @@ if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
 fi
 #
 ##########################################################################################
-
