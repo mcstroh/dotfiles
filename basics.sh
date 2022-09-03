@@ -93,3 +93,11 @@ function up {
     echo "Couldn't go up $limit dirs.";
   fi
 }
+
+
+function tar_and_rm {
+    dir="$1"
+    if [ -d "$dir" ]; then
+        tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir";
+    fi
+}
