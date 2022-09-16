@@ -7,7 +7,7 @@
 #
 #  .default shell file catch-all for BASH/ZSH
 #
-# Last modified: March 18th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
+# Last modified: September 16th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
 #
 #
 
@@ -75,15 +75,14 @@ fi
 #
 # Check shell to determine subsequent dotfiles to load
 #
-if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
-   
+if [ -n $(grep zsh /proc/$$/cmdline 2> /dev/null) ] && [ -z ${BASH_VERSION+x} ]; then
+
    # Assume Zsh
     if [ -f "$HOME/dotfiles/zshrc.zsh" ]; then
         . $HOME/dotfiles/zshrc.zsh
     fi   
 
-
-elif [ -n "`$SHELL -c 'echo $BASH_VERSION'`" ]; then
+elif [ -n $(grep bash /proc/$$/cmdline 2> /dev/null) ]; then
 
    # Assume BASH
     if [ -f "$HOME/dotfiles/bashrc.sh" ]; then
@@ -246,7 +245,7 @@ fi
 ##########################################################################################
 #
 # Clean up path if we're in ZSH
-if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
+if [ -n $(grep zsh /proc/$$/cmdline 2> /dev/null) ] && [ -z ${BASH_VERSION+x} ]; then
     typeset -U path
 fi
 #

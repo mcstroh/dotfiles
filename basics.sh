@@ -21,7 +21,7 @@ set history=500000
 alias rm='rm -i'
 alias ssh='ssh -XY'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
-alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file"; fi; done'
+alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
 alias conda_base='conda activate base'
 
 
@@ -98,6 +98,6 @@ function up {
 function tar_and_rm {
     dir="$1"
     if [ -d "$dir" ]; then
-        tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir";
+        tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir" || rm -rf "${dir}.tar.gz";
     fi
 }
