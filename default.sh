@@ -76,7 +76,6 @@ fi
 # Check shell to determine subsequent dotfiles to load
 #
 if [ -n $(grep zsh /proc/$$/cmdline 2> /dev/null) ] && [ -z ${BASH_VERSION+x} ]; then
-
    # Assume Zsh
     if [ -f "$HOME/dotfiles/zshrc.zsh" ]; then
         . $HOME/dotfiles/zshrc.zsh
@@ -242,7 +241,7 @@ fi
 ##########################################################################################
 #
 # Clean up path if we're in ZSH
-if command -v typeset -U path >/dev/null 2>&1; then
+if [ -n $(grep zsh /proc/$$/cmdline 2> /dev/null) ] && [ -z ${BASH_VERSION+x} ]; then
     typeset -U path
 fi
 #
