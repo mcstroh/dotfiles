@@ -82,15 +82,12 @@ if [ -n $(grep zsh /proc/$$/cmdline 2> /dev/null) ] && [ -z ${BASH_VERSION+x} ];
         . $HOME/dotfiles/zshrc.zsh
     fi   
 
-elif [ -n $(grep bash /proc/$$/cmdline 2> /dev/null) ]; then
-
+else
    # Assume BASH
     if [ -f "$HOME/dotfiles/bashrc.sh" ]; then
         . $HOME/dotfiles/bashrc.sh
     fi   
 
-else
-    echo "Running unknown shell."
 fi
 #
 ##########################################################################################
