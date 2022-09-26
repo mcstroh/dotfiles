@@ -242,7 +242,7 @@ fi
 ##########################################################################################
 #
 # Clean up path if we're in ZSH
-if [ -n $(grep zsh /proc/$$/cmdline 2> /dev/null) ] && [ -z ${BASH_VERSION+x} ]; then
+if command -v typeset -U path >/dev/null 2>&1; then
     typeset -U path
 fi
 #
