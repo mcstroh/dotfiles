@@ -192,7 +192,8 @@ elif [ -d "$HOME/../data/anaconda3" ]; then
     else
         export PATH="$HOME/../data/miniconda3/bin:$PATH"
     fi
-fi#
+fi
+#
 ##########################################################################################
 
 
