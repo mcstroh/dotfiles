@@ -173,19 +173,26 @@ fi
 if [ -d "$HOME/../data/miniconda3" ]; then
     if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
         eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
-        conda activate py39
+        if [ -d "$HOME/../data/miniconda3/envs/py310" ]; then
+            conda activate py310
+        else
+            conda activate py39
+        fi
     else
         export PATH="$HOME/../data/miniconda3/bin:$PATH"
     fi
 elif [ -d "$HOME/../data/anaconda3" ]; then
     if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
         eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
-        conda activate py39
+        if [ -d "$HOME/../data/anaconda3/envs/py310" ]; then
+            conda activate py310
+        else
+            conda activate py39
+        fi
     else
         export PATH="$HOME/../data/miniconda3/bin:$PATH"
     fi
-fi
-#
+fi#
 ##########################################################################################
 
 

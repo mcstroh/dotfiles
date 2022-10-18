@@ -19,7 +19,7 @@ set history=500000
 
 # Aliases
 alias rm='rm -i'
-alias ssh='ssh -Y'
+alias ssh='ssh -X'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
 alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
 alias conda_base='conda activate base'
