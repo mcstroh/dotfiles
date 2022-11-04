@@ -101,3 +101,12 @@ function tar_and_rm {
         tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir" || rm -rf "${dir}.tar.gz";
     fi
 }
+
+function decompress_pipeline {
+    rm -rf bandpass_plots
+    rm -rf data_plots
+    rm -rf corrected_plots
+    tar xzf bandpass_plots.tar.gz
+    tar xzf data_plots.tar.gz
+    tar xzf corrected_plots.tar.gz
+}
