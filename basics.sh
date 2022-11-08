@@ -31,6 +31,7 @@ export EDITOR="$VISUAL"
 
 
 
+
 # General extraction function
 function extract {
  if [ -z "$1" ]; then
@@ -101,3 +102,29 @@ function tar_and_rm {
         tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir" || rm -rf "${dir}.tar.gz";
     fi
 }
+
+##########################################################################################
+#
+# Configure local anaconda installation if it exists
+#
+# By referencing $HOME, this should work for typical local MacOS and Linux installations
+if [ -d "$HOME/../data/miniconda3" ]; then
+    if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
+        conda activate py39
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+elif [ -d "$HOME/../data/anaconda3" ]; then
+    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
+        conda activate py39
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+fi
+if { conda env list | grep "py311"; } >/dev/null; then
+    conda activate py311
+fi
+#
+##########################################################################################
