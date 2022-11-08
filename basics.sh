@@ -103,33 +103,6 @@ function tar_and_rm {
     fi
 }
 
-<<<<<<< HEAD
-##########################################################################################
-#
-# Configure local anaconda installation if it exists
-#
-# By referencing $HOME, this should work for typical local MacOS and Linux installations
-if [ -d "$HOME/../data/miniconda3" ]; then
-    if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
-        eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
-        conda activate py39
-    else
-        export PATH="$HOME/../data/miniconda3/bin:$PATH"
-    fi
-elif [ -d "$HOME/../data/anaconda3" ]; then
-    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
-        eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
-        conda activate py39
-    else
-        export PATH="$HOME/../data/miniconda3/bin:$PATH"
-    fi
-fi
-if { conda env list | grep "py311"; } >/dev/null; then
-    conda activate py311
-fi
-#
-##########################################################################################
-=======
 function decompress_pipeline {
     rm -rf bandpass_plots
     rm -rf data_plots
@@ -138,4 +111,36 @@ function decompress_pipeline {
     tar xzf data_plots.tar.gz
     tar xzf corrected_plots.tar.gz
 }
->>>>>>> 532c4ab8959bd3dcf05a2c3f38fa6a9e6536e468
+
+##########################################################################################
+#
+# Configure local anaconda installation if it exists
+#
+# By referencing $HOME, this should work for typical local MacOS and Linux installations
+if [ -d "$HOME/../data/miniconda3" ]; then
+    if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+elif [ -d "$HOME/../data/anaconda3" ]; then
+    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+fi
+
+# Activate conda environment
+if { conda env list | grep "py311"; } >/dev/null; then
+    conda activate py311
+elif { conda env list | grep "py310"; } >/dev/null; then
+    conda activate py310
+elif { conda env list | grep "py39"; } >/dev/null; then
+    conda activate py39
+else
+    conda activate base
+fi
+#
+##########################################################################################
+
