@@ -213,6 +213,24 @@ fi
 ##########################################################################################
 
 
+
+##########################################################################################
+#
+# Activate conda environment
+#
+if { conda env list | grep "py311"; } >/dev/null; then
+    conda activate py311
+elif { conda env list | grep "py310"; } >/dev/null; then
+    conda activate py310
+elif { conda env list | grep "py39"; } >/dev/null; then
+    conda activate py39
+else
+    conda activate base
+fi
+##########################################################################################
+
+
+
 ##########################################################################################
 #
 # Clean up path if we're in ZSH
