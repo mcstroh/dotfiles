@@ -167,6 +167,42 @@ fi
 
 ##########################################################################################
 #
+<<<<<<< HEAD
+=======
+# Configure local anaconda installation if it exists
+#
+# By referencing $HOME, this should work for typical local MacOS and Linux installations
+if [ -d "$HOME/../data/miniconda3" ]; then
+    if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
+        if [ -d "$HOME/../data/miniconda3/envs/py310" ]; then
+            conda activate py310
+        else
+            conda activate py39
+        fi
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+elif [ -d "$HOME/../data/anaconda3" ]; then
+    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
+        eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
+        if [ -d "$HOME/../data/anaconda3/envs/py310" ]; then
+            conda activate py310
+        else
+            conda activate py39
+        fi
+    else
+        export PATH="$HOME/../data/miniconda3/bin:$PATH"
+    fi
+fi
+#
+##########################################################################################
+
+
+
+##########################################################################################
+#
+>>>>>>> 532c4ab8959bd3dcf05a2c3f38fa6a9e6536e468
 # Configure BAaDE survey environment
 #
 if [ -f /projects/b1094/stroh/baade/setup.sh ]; then

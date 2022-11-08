@@ -19,7 +19,7 @@ set history=500000
 
 # Aliases
 alias rm='rm -i'
-alias ssh='ssh -Y'
+alias ssh='ssh -X'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
 alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
 alias conda_base='conda activate base'
@@ -103,6 +103,7 @@ function tar_and_rm {
     fi
 }
 
+<<<<<<< HEAD
 ##########################################################################################
 #
 # Configure local anaconda installation if it exists
@@ -128,3 +129,13 @@ if { conda env list | grep "py311"; } >/dev/null; then
 fi
 #
 ##########################################################################################
+=======
+function decompress_pipeline {
+    rm -rf bandpass_plots
+    rm -rf data_plots
+    rm -rf corrected_plots
+    tar xzf bandpass_plots.tar.gz
+    tar xzf data_plots.tar.gz
+    tar xzf corrected_plots.tar.gz
+}
+>>>>>>> 532c4ab8959bd3dcf05a2c3f38fa6a9e6536e468
