@@ -35,7 +35,6 @@ export TERM="xterm-256color" # getting colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 set savehist=500000
 set history=500000
-#set histfile=$HOME/dotfiles/.histfile
 
 
 # Use EMACS as default text editor
@@ -218,14 +217,16 @@ fi
 #
 # Activate conda environment
 #
-if { conda env list | grep "py311"; } >/dev/null; then
-    conda activate py311
-elif { conda env list | grep "py310"; } >/dev/null; then
-    conda activate py310
-elif { conda env list | grep "py39"; } >/dev/null; then
-    conda activate py39
-else
-    conda activate base
+if command -v conda >/dev/null 2>&1; then
+    if { conda env list | grep "py311"; } >/dev/null; then
+        conda activate py311
+    elif { conda env list | grep "py310"; } >/dev/null; then
+        conda activate py310
+    elif { conda env list | grep "py39"; } >/dev/null; then
+        conda activate py39
+    elif { conda env list | grep "base"; } >/dev/null; then
+        conda activate base
+    fi
 fi
 ##########################################################################################
 
