@@ -62,7 +62,7 @@ fi
 # Brew package manager
 #    Need to load early due to later dependencies
 #
-if [ -f "/opt/homebrew/bin/brew" ]; then
+if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 #
@@ -144,7 +144,7 @@ fi
 # Local CARTA installation
 #
 # If MacOS
-if [ -f '/Applications/CARTA.app/Contents/MacOS/CARTA' ]; then
+if [ -f /Applications/CARTA.app/Contents/MacOS/CARTA ]; then
     alias carta='/Applications/CARTA.app/Contents/MacOS/CARTA'
 fi
 #
@@ -156,7 +156,7 @@ fi
 #
 # Allocation statistics directory
 #
-if [ -d  '/home/mcs8686/allocation_data' ]; then
+if [ -d  /home/mcs8686/allocation_data ]; then
     export ALLOCATION_DATA_DIR='/home/mcs8686/allocation_data'
 fi
 #
