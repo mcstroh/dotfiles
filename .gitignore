@@ -6,3 +6,6 @@ servers.sh
 
 # git config
 .gitconfig
+
+# Pycharm config
+.idea
