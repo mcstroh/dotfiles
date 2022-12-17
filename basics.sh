@@ -6,7 +6,6 @@
 #
 # .basics file for shell setup
 #
-# Last modified: March 18th, 2022 - M. C. Stroh (michael.stroh@northwestern.edu)
 #
 
 
@@ -112,24 +111,28 @@ function decompress_pipeline {
     tar xzf corrected_plots.tar.gz
 }
 
-##########################################################################################
+###############################################################################
 #
 # Configure local anaconda installation if it exists
 #
-# By referencing $HOME, this should work for typical local MacOS and Linux installations
+# Reference $HOME, to work for  local macOS and Linux installations
 if [ -d "$HOME/../data/miniconda3" ]; then
     if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
         eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
     else
         export PATH="$HOME/../data/miniconda3/bin:$PATH"
     fi
-elif [ -d "$HOME/../data/anaconda3" ]; then
-    if [ -f "$HOME/../data/anaconda3/etc/profile.d/conda.sh" ]; then
-        eval "$($HOME/../data/anaconda3/bin/conda shell.bash hook)"
-    else
-        export PATH="$HOME/../data/miniconda3/bin:$PATH"
-    fi
 fi
 #
-##########################################################################################
+###############################################################################
 
+###############################################################################
+#
+# Alias for Emacs on macOS due to bug with keyboard input not moving to window
+#
+if [ "$(uname)"=="Darwin" ]; then
+    alias emacs="emacs -nw"
+fi
+#
+#
+###############################################################################
