@@ -15,6 +15,16 @@
 #
 # Start with the CIERA bashrc file
 #
+QUEST_HOSTS="quser21 quser22 quser23 quser24 quser31 quser32 quser33 quser34"
+hostname=`hostname`
+quest_loginnode=false
+for x in $QUEST_HOSTS; do
+    if [ "$hostname" = "$x" ]; then
+        quest_loginnode=true
+        break
+    fi
+done
+
 if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
     . /projects/b1094/software/dotfiles/.bashrc
 
@@ -217,7 +227,7 @@ fi
 #
 # Activate conda environment
 #
-if command -v conda >/dev/null 2>&1; then
+function load_conda {
     if { conda env list | grep "py311"; } >/dev/null; then
         conda activate py311
     elif { conda env list | grep "py310"; } >/dev/null; then
@@ -226,6 +236,18 @@ if command -v conda >/dev/null 2>&1; then
         conda activate py39
     elif { conda env list | grep "base"; } >/dev/null; then
         conda activate base
+    fi
+}
+
+if [ ! -z ${ZSH_VERSION+x} ]; then
+    load_conda
+else
+    if command -v shopt >/dev/null 2>&1; then
+        if [ $quest_loginnode ] && [[ $- == *i* ]]; then
+            echo 'Interactive login node.'
+        else
+            load_conda
+        fi
     fi
 fi
 ##########################################################################################
