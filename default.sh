@@ -243,9 +243,7 @@ if [ ! -z ${ZSH_VERSION+x} ]; then
     load_conda
 else
     if command -v shopt >/dev/null 2>&1; then
-        if [ $quest_loginnode ] && [[ $- == *i* ]]; then
-            echo 'Interactive login node.'
-        else
+        if [ "$2" == "on" ] && command -v conda >/dev/null 2>&1; then
             load_conda
         fi
     fi
@@ -262,3 +260,7 @@ if [ ! -z ${ZSH_VERSION+x} ]; then
 fi
 #
 ##########################################################################################
+
+function node {
+    srun --account=b1094 -N 1 -n1 --partition=ciera-himem --time=2-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
+}

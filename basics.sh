@@ -21,14 +21,11 @@ alias rm='rm -i'
 alias ssh='ssh -X'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
 alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
-alias conda_base='conda activate base'
 
 
 # Use Emacs as the default text editor
 export VISUAL=emacs
 export EDITOR="$VISUAL"
-
-
 
 
 # General extraction function
@@ -101,6 +98,7 @@ function tar_and_rm {
         tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir" || rm -rf "${dir}.tar.gz";
     fi
 }
+
 
 function decompress_pipeline {
     rm -rf bandpass_plots
