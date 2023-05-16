@@ -258,6 +258,17 @@ fi
 #
 ##########################################################################################
 
-function node {
-    srun --account=b1094 -N 1 -n1 --partition=ciera-himem --time=2-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
+function nodes {
+    srun --account=b1094 -N 1 -n 1 --partition=ciera-himem --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
+}
+
+function nodes2 {
+    srun --account=b1094 -N 1 -n 1 --partition=ciera-std --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
+}
+
+function fix_permissions {
+    chmod -R go-w /projects/b1094/software/miniconda
+    chmod -R go+rX /projects/b1094/software/miniconda
+    chmod -R go-w /projects/b1094/software/environments
+    chmod -R go+rX /projects/b1094/software/environments
 }
