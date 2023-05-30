@@ -267,8 +267,8 @@ function nodes2 {
 }
 
 function fix_permissions {
-    chmod -R go-w /projects/b1094/software/miniconda
-    chmod -R go+rX /projects/b1094/software/miniconda
+    chmod -R go-w /projects/b1094/software/miniconda3
+    chmod -R go+rX /projects/b1094/software/miniconda3
     chmod -R go-w /projects/b1094/software/environments
     chmod -R go+rX /projects/b1094/software/environments
     chmod -R go-w /projects/b1094/software/miniforge3
