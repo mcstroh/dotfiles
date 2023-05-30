@@ -113,8 +113,20 @@ function decompress_pipeline {
 #
 # Configure local anaconda installation if it exists
 #
-# Reference $HOME, to work for  local macOS and Linux installations
-if [ -d "$HOME/../data/miniconda3" ]; then
+# Reference $HOME, to work for local macOS and Linux installations
+if [ -d "$HOME/../data/miniforge3" ]; then
+    __conda_setup="$('$HOME/../data/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "$HOME/../data/miniforge3/etc/profile.d/conda.sh" ]; then
+            . "$HOME/../data/miniforge3/etc/profile.d/conda.sh"
+        else
+            export PATH="$HOME/../data/miniforge/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+elif [ -d "$HOME/../data/miniconda3" ]; then
     if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
         eval "$($HOME/../data/miniconda3/bin/conda shell.bash hook)"
     else
