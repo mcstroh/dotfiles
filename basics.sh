@@ -122,7 +122,7 @@ if [ -d "$HOME/../data/miniforge3" ]; then
         if [ -f "$HOME/../data/miniforge3/etc/profile.d/conda.sh" ]; then
             . "$HOME/../data/miniforge3/etc/profile.d/conda.sh"
         else
-            export PATH="$HOME/../data/miniforge/bin:$PATH"
+            export PATH="$HOME/../data/miniforge3/bin:$PATH"
         fi
     fi
     unset __conda_setup
