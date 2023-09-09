@@ -1,5 +1,6 @@
 # Server aliases
 servers.sh
+server*
 
 # History file
 .histfile
@@ -9,3 +10,8 @@ servers.sh
 
 # Pycharm config
 .idea
+
+# Emacs
+*~
+\#*\#
+.\#*
