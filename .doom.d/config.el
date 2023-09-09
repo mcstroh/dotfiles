@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Michael C. Stroh"
-      user-mail-address "stroh@astroh.org")
+      user-mail-address "stroh@michaelcstroh.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -100,5 +100,5 @@
 
 
 ;minimap
-(setq minimap-window-location 'right)
-(minimap-mode 1)
+;(setq minimap-window-location 'right)
+;(minimap-mode 1)
