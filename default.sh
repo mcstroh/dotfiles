@@ -111,20 +111,20 @@ fi
 
 ##########################################################################################
 #
-# Eza - Rust replacement for ls
+# Eza / exa - Rust replacement for ls
 #
-if command -v exa >/dev/null 2>&1; then
-    alias ls='exa -al --color=always --group-directories-first --header' # Default
-    alias la='exa -a --color=always --group-directories-first --header'  # All but not long
-    alias ll='exa -l --color=always --group-directories-first --header'  # Long but not all
-    alias lt='exa -aT --color=always --group-directories-first --header' # Tree format
-    alias l.='exa -a | egrep "^\."'
-elif command -v eza >/dev/null 2>&1; then
+if command -v eza >/dev/null 2>&1; then
     alias ls='eza -al --color=always --group-directories-first --header' # Default
     alias la='eza -a --color=always --group-directories-first --header'  # All but not long
     alias ll='eza -l --color=always --group-directories-first --header'  # Long but not all
     alias lt='eza -aT --color=always --group-directories-first --header' # Tree format
     alias l.='eza -a | egrep "^\."'
+elif command -v exa >/dev/null 2>&1; then
+    alias ls='exa -al --color=always --group-directories-first --header' # Default
+    alias la='exa -a --color=always --group-directories-first --header'  # All but not long
+    alias ll='exa -l --color=always --group-directories-first --header'  # Long but not all
+    alias lt='exa -aT --color=always --group-directories-first --header' # Tree format
+    alias l.='exa -a | egrep "^\."'
 fi
 #
 ##########################################################################################
