@@ -28,6 +28,25 @@ done
 if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
     . /projects/b1094/software/dotfiles/.bashrc
 
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/projects/b1094/software/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh" ]; then
+            . "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh"
+        else
+            export PATH="/projects/b1094/software/miniforge3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
+    if [ -f "/projects/b1094/software/miniforge3/etc/profile.d/mamba.sh" ]; then
+        . "/projects/b1094/software/miniforge3/etc/profile.d/mamba.sh"
+    fi
+    # <<< conda initialize <<<
+
 # If we're not on Quest, run the local version
 elif [ -f "$HOME/dotfiles/basics.sh" ]; then
     . $HOME/dotfiles/basics.sh
@@ -229,6 +248,7 @@ fi
 #
 # Activate conda environment
 #
+alias conda='mamba'
 function load_conda {
     if { conda env list | grep "py311"; } >/dev/null; then
         conda activate py311
