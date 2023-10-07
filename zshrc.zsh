@@ -41,8 +41,8 @@ if [ "$(uname)"=="Darwin" ] && command -v brew >/dev/null 2>&1; then
     # ZSH plugins
     #
 
-    if [[ -r $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-        . $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
+    if [[ -r $(brew --prefix)/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+        . $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
     fi
     
     # ZSH git prompt
