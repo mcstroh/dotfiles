@@ -25,27 +25,9 @@ for x in $QUEST_HOSTS; do
     fi
 done
 
+# If we're on Quest, use CIERA version
 if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
     . /projects/b1094/software/dotfiles/.bashrc
-
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/projects/b1094/software/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh" ]; then
-            . "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh"  # commented out by conda initialize
-        else
-            export PATH="/projects/b1094/software/miniforge3/bin:$PATH"  # commented out by conda initialize
-        fi
-    fi
-    unset __conda_setup
-
-    if [ -f "/projects/b1094/software/miniforge3/etc/profile.d/mamba.sh" ]; then
-        . "/projects/b1094/software/miniforge3/etc/profile.d/mamba.sh"
-    fi
-    # <<< conda initialize <<<
 
 # If we're not on Quest, run the local version
 elif [ -f "$HOME/dotfiles/basics.sh" ]; then
@@ -138,12 +120,6 @@ if command -v eza >/dev/null 2>&1; then
     alias ll='eza -l --color=always --group-directories-first --header'  # Long but not all
     alias lt='eza -aT --color=always --group-directories-first --header' # Tree format
     alias l.='eza -a | egrep "^\."'
-elif command -v exa >/dev/null 2>&1; then
-    alias ls='exa -al --color=always --group-directories-first --header' # Default
-    alias la='exa -a --color=always --group-directories-first --header'  # All but not long
-    alias ll='exa -l --color=always --group-directories-first --header'  # Long but not all
-    alias lt='exa -aT --color=always --group-directories-first --header' # Tree format
-    alias l.='exa -a | egrep "^\."'
 fi
 #
 ##########################################################################################
@@ -207,6 +183,7 @@ fi
 if [ -d "$HOME/.emacs.d/bin" ]; then
     export PATH="$HOME/.emacs.d/bin:$PATH"
 fi
+alias emacs="emacs -nw"
 #
 ##########################################################################################
 
@@ -248,7 +225,6 @@ fi
 #
 # Activate conda environment
 #
-alias conda='mamba'
 function load_conda {
     if { conda env list | grep "py311"; } >/dev/null; then
         conda activate py311
