@@ -35,9 +35,9 @@ if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
         eval "$__conda_setup"
     else
         if [ -f "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh" ]; then
-            . "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh"
+            . "/projects/b1094/software/miniforge3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
-            export PATH="/projects/b1094/software/miniforge3/bin:$PATH"
+            export PATH="/projects/b1094/software/miniforge3/bin:$PATH"  # commented out by conda initialize
         fi
     fi
     unset __conda_setup
