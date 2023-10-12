@@ -259,6 +259,10 @@ fi
 #
 ##########################################################################################
 
+if [ -f $HOME/../data/swc-shell-split-window/swc-shell-split-window.sh ]; then
+    alias tutorial="$HOME/../data/swc-shell-split-window/swc-shell-split-window.sh"
+fi
+
 function nodes {
     srun --account=b1094 -N 1 -n 1 --partition=ciera-himem --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
 }
