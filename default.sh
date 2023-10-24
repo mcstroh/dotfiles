@@ -15,7 +15,7 @@
 #
 # Start with the CIERA bashrc file
 #
-QUEST_HOSTS="quser21 quser22 quser23 quser24 quser31 quser32 quser33 quser34"
+QUEST_HOSTS="quser31 quser32 quser33 quser34"
 hostname=`hostname`
 quest_loginnode=false
 for x in $QUEST_HOSTS; do
@@ -112,7 +112,7 @@ fi
 
 ##########################################################################################
 #
-# Eza / exa - Rust replacement for ls
+# Exa - Rust replacement for ls
 #
 if command -v eza >/dev/null 2>&1; then
     alias ls='eza -al --color=always --group-directories-first --header' # Default
@@ -226,7 +226,9 @@ fi
 # Activate conda environment
 #
 function load_conda {
-    if { conda env list | grep "py311"; } >/dev/null; then
+    if { conda env list | grep "py312"; } >/dev/null; then
+        conda activate py312
+    elif { conda env list | grep "py311"; } >/dev/null; then
         conda activate py311
     elif { conda env list | grep "py310"; } >/dev/null; then
         conda activate py310
@@ -237,15 +239,8 @@ function load_conda {
     fi
 }
 
-if [ ! -z ${ZSH_VERSION+x} ]; then
-    load_conda
-else
-    if command -v shopt >/dev/null 2>&1; then
-        if [ "$2" == "on" ] && command -v conda >/dev/null 2>&1; then
-            load_conda
-        fi
-    fi
-fi
+load_conda
+
 ##########################################################################################
 
 
@@ -268,6 +263,10 @@ function nodes {
 }
 
 function nodes2 {
+    srun --account=b1094 -N 1 -n 1 --partition=ciera-std --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
+}
+
+function baade_node {
     srun --account=b1094 -N 1 -n 1 --partition=ciera-std --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
 }
 
