@@ -157,12 +157,12 @@ fi
 # FTOOLS/CALDB
 #
 if [ "$(uname)"=="Darwin" ] && [ -d "/Users/data/heasoft" ] ; then
-    export HEADAS=/Users/data/heasoft/x86_64-apple-darwin22.6.0
-    . $HEADAS/headas-init.sh
+    export HEADAS="/Users/data/heasoft/x86_64-apple-darwin22.6.0"
+    . "$HEADAS/headas-init.sh"
 fi
 if [ "$(uname)"=="Darwin" ] && [ -d "/Users/data/caldb" ] ; then
-    export CALDB=/Users/data/caldb
-    . $CALDB/software/tools/caldbinit.sh
+    export CALDB="/Users/data/caldb"
+    . "$CALDB/software/tools/caldbinit.sh"
 fi
 #
 #
