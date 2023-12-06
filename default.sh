@@ -204,7 +204,9 @@ fi
 #
 # IDL
 #
-if [ -r /Applications/harris/idl/bin/idl_setup.bash ] ; then
+if [ -r /Applications/NV5/idl/bin/idl_setup.bash ] ; then
+    . /Applications/NV5/idl/bin/idl_setup.bash
+elif [ -r /Applications/harris/idl/bin/idl_setup.bash ] ; then
     . /Applications/harris/idl/bin/idl_setup.bash
 fi
 #
