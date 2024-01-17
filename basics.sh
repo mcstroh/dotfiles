@@ -183,3 +183,6 @@ if [ -d $HOME/.local/bin ]; then
 fi
 #
 ###############################################################################
+
+# Force unmount
+alias fumnt="sudo umount -l"
