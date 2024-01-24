@@ -130,6 +130,22 @@ if [ -d "$HOME/../data/miniforge3" ]; then
     if [ -f "$HOME/../data/miniforge3/etc/profile.d/mamba.sh" ]; then
         . "$HOME/../data/miniforge3/etc/profile.d/mamba.sh"
     fi
+elif [ -d "$HOME/data/miniforge3" ]; then
+    __conda_setup="$('$HOME/data/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "$HOME/data/miniforge3/etc/profile.d/conda.sh" ]; then
+            . "$HOME/data/miniforge3/etc/profile.d/conda.sh"
+        else
+            export PATH="$HOME/data/miniforge3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
+    if [ -f "$HOME/data/miniforge3/etc/profile.d/mamba.sh" ]; then
+        . "$HOME/data/miniforge3/etc/profile.d/mamba.sh"
+    fi
 
 elif [ -d "$HOME/../data/miniconda3" ]; then
     if [ -f "$HOME/../data/miniconda3/etc/profile.d/conda.sh" ]; then
