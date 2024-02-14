@@ -172,8 +172,8 @@ fi
 #
 # FTOOLS/CALDB
 #
-if [ "$(uname)"=="Darwin" ] && [ -d "/Users/data/heasoft" ] ; then
-    export HEADAS="/Users/data/heasoft/x86_64-apple-darwin22.6.0"
+if [ "$(uname)"=="Darwin" ] && [ -d "/Users/data/heasoft" ]; then
+    export HEADAS="/Users/data/heasoft"
     . "$HEADAS/headas-init.sh"
 elif [ -d "/home/data/heasoft" ]; then
     export HEADAS="/home/data/heasoft/x86_64-pc-linux-gnu-libc2.38"
