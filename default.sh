@@ -282,6 +282,10 @@ function baade_node {
     srun --account=b1094 -N 1 -n 1 --partition=ciera-std --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
 }
 
+function specialist_node {
+    srun --account=b1094 -N 1 --exclusive --partition=ciera-specialist --time=14-00:00:00 --job-name="specialist" --x11 --pty bash -l
+}
+
 function fix_permissions {
     chmod -R go-w /projects/b1094/software/miniforge3
     chmod -R go+rX /projects/b1094/software/miniforge3
