@@ -202,3 +202,6 @@ fi
 
 # Force unmount
 alias fumnt="sudo umount -l"
+
+# Skip tableplus
+alias yay="yay --ignore tableplus"
