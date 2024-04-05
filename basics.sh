@@ -1,20 +1,20 @@
-#  ____ ___ _____ ____      _
-# / ___|_ _| ____|  _ \    / \
-#| |    | ||  _| | |_) |  / _ \
-#| |___ | || |___|  _ <  / ___ \
-# \____|___|_____|_| \_\/_/   \_\
 #
-# .basics file for shell setup
+#  __  __   ____     ____  _             _
+# |  \/  | / ___|   / ___|| |_ _ __ ___ | |__
+# | |\/| || |       \___ \| __| '__/ _ \| '_ \
+# | |  | || |___ _   ___) | |_| | | (_) | | | |
+# |_|  |_(_)____(_) |____/ \__|_|  \___/|_| |_|
+#
+#  .default shell file catch-all for BASH/ZSH
+#
+# M. C. Stroh (michael.stroh@northwestern.edu)
 #
 #
-
 
 
 # Give us a long history
 set savehist=500000
 set history=500000
-
-
 
 # Aliases
 alias rm='rm -i'
@@ -202,3 +202,6 @@ fi
 
 # Force unmount
 alias fumnt="sudo umount -l"
+
+# Skip diffs and cleanbuild in yay
+alias yay="yay --save --answerdiff None --answerclean None --removemake"

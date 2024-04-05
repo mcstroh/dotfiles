@@ -15,15 +15,15 @@
 #
 # Start with the CIERA bashrc file
 #
-QUEST_HOSTS="quser31 quser32 quser33 quser34"
-hostname=`hostname`
-quest_loginnode=false
-for x in $QUEST_HOSTS; do
-    if [ "$hostname" = "$x" ]; then
-        quest_loginnode=true
-        break
-    fi
-done
+#QUEST_HOSTS="quser31 quser32 quser33 quser34"
+#hostname=`hostname`
+#quest_loginnode=false
+#for x in $QUEST_HOSTS; do
+#    if [ "$hostname" = "$x" ]; then
+#        quest_loginnode=true
+#        break
+#    fi
+#done
 
 # If we're on Quest, use CIERA version
 if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
@@ -35,7 +35,6 @@ elif [ -f "$HOME/dotfiles/basics.sh" ]; then
 fi
 #
 ##########################################################################################
-
 
 
 ##########################################################################################
