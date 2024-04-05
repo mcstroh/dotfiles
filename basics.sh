@@ -202,6 +202,3 @@ fi
 
 # Force unmount
 alias fumnt="sudo umount -l"
-
-# Skip diffs and cleanbuild in yay
-alias yay="yay --save --answerdiff None --answerclean None --removemake"
