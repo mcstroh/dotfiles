@@ -81,11 +81,20 @@ elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
         . /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
     fi
 
-
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
 [[ ! -f "$HOME/dotfiles/.p10k.zsh" ]] || . ${HOME}/dotfiles/.p10k.zsh
+
+# fzf
+if command -v fzf >/dev/null 2>&1; then
+    eval "$(fzf --zsh)"
+fi
+
+# zoxide
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+fi
 
 #
 ##########################################################################################
