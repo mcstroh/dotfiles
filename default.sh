@@ -132,10 +132,20 @@ if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
     . $HOME/.config/broot/launcher/bash/br
 fi
 
-if command -v broot >/dev/null 2>&1
-then
+if command -v broot >/dev/null 2>&1; then
     alias br='broot -dhp'
     alias bs='broot --sizes'
+fi
+#
+##########################################################################################
+
+
+##########################################################################################
+#
+# zoxide
+#
+if command -v zoxide >/dev/null 2>&1; then
+    alias cd='z'
 fi
 #
 ##########################################################################################
