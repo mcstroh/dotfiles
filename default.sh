@@ -302,7 +302,3 @@ function fix_permissions {
     chmod -R go-w /projects/b1094/software/environments
     chmod -R go+rX /projects/b1094/software/environments
 }
-
-function arch_update_pacman_mirrors {
-    sudo reflector --verbose --sort rate --save /etc/pacman.d/mirrorlist
-}
