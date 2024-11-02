@@ -15,3 +15,7 @@ server*
 *~
 \#*\#
 .\#*
+
+# Syncthing
+.stfolder/
+.stignore
