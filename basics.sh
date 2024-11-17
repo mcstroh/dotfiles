@@ -210,5 +210,9 @@ fi
 #
 ###############################################################################
 
+if [ -d "/home/data/zed" ]; then
+    alias zed="cd /home/data/zed;WAYLAND_DISPLAY='' cargo run --release"
+fi
+
 # Force unmount
 alias fumnt="sudo umount -l"
