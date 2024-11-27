@@ -1,6 +1,7 @@
 # Server aliases
 servers.sh
 server*
+.netrc
 
 # History file
 .histfile
