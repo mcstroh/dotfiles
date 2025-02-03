@@ -317,6 +317,14 @@ function fix_permissions {
     chmod -R go+rX /projects/b1094/software/environments
 }
 
+function checksum {
+    if [ -z "$1" ] || [ ! "$1" = "md5" ]; then
+	find -type f -exec sha256sum "{}" + > checksum.sha256
+    else
+	find -type f -exec md5sum "{}" + > checksum.md5
+    fi
+}
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
