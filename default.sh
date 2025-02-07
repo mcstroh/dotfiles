@@ -236,23 +236,23 @@ fi
 #
 # Activate conda environment
 #
-function load_conda {
-    if { conda env list | grep "^py313"; } >/dev/null; then
-        conda activate py313
-    elif { conda env list | grep "^py312"; } >/dev/null; then
-        conda activate py312
-    elif { conda env list | grep "^py311"; } >/dev/null; then
-        conda activate py311
-    elif { conda env list | grep "^py310"; } >/dev/null; then
-        conda activate py310
-    elif { conda env list | grep "^py39"; } >/dev/null; then
-        conda activate py39
-    elif { conda env list | grep "base"; } >/dev/null; then
-        conda activate base
+function load_mamba {
+    if { mamba env list | grep "^py313"; } >/dev/null; then
+        mamba activate py313
+    elif { mamba env list | grep "^py312"; } >/dev/null; then
+        mamba activate py312
+    elif { mamba env list | grep "^py311"; } >/dev/null; then
+        mamba activate py311
+    elif { mamba env list | grep "^py310"; } >/dev/null; then
+        mamba activate py310
+    elif { mamba env list | grep "^py39"; } >/dev/null; then
+        mamba activate py39
+    elif { mamba env list | grep "base"; } >/dev/null; then
+        mamba activate base
     fi
 }
 if [[ "$quest_loginnode" == false ]]; then
-    load_conda
+    load_mamba
 fi
 
 ##########################################################################################
