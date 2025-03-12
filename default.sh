@@ -167,7 +167,7 @@ fi
 #
 # Allocation statistics directory
 #
-if [ -d  /home/mcs8686/allocation_data ]; then
+if [ -d  "$HOME/allocation_data" ]; then
     export ALLOCATION_DATA_DIR='/home/mcs8686/allocation_data'
 fi
 #
@@ -290,6 +290,22 @@ fi
 #
 ##########################################################################################
 
+if [ -d "$HOME/.nvm" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+# pnpm
+if [ -d "$HOME/.local/share/pnpm" ]; then
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+    case ":$PATH:" in
+      *":$PNPM_HOME:"*) ;;
+      *) export PATH="$PNPM_HOME:$PATH" ;;
+    esac
+fi
+
+
 if [ -f $HOME/../data/swc-shell-split-window/swc-shell-split-window.sh ]; then
     alias tutorial="$HOME/../data/swc-shell-split-window/swc-shell-split-window.sh"
 fi
@@ -325,7 +341,3 @@ function checksum {
     fi
 }
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
