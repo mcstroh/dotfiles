@@ -15,4 +15,6 @@ config.window_background_opacity = 0.8
 config.macos_window_background_blur = 10
 config.adjust_window_size_when_changing_font_size = false
 
+config.front_end = "WebGpu"
+
 return config
