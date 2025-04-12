@@ -22,6 +22,11 @@ alias ssh='ssh -X'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
 alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
 
+if [ ! -z ${ZSH_VERSION+x} ]; then
+    export MAMBA_SHELL="zsh"
+else
+    export MAMBA_SHELL="bash"
+fi
 
 # Use Emacs as the default text editor
 export VISUAL=emacs
@@ -114,16 +119,24 @@ function decompress_pipeline {
 # Configure local mamba installation if it exists
 #
 # Reference $HOME, to work for local macOS and Linux installations
-export MAMBA_EXE="$HOME"/../data/miniforge3/bin/mamba;
-export MAMBA_ROOT_PREFIX="$HOME"/../data/miniforge3;
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+export MAMBA_ROOT_PREFIX="$HOME/../data/miniforge3"
+export MAMBA_EXE="$MAMBA_ROOT_PREFIX/bin/mamba"
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell $MAMBA_SHELL --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+__conda_setup="$('$MAMBA_ROOT_PREFIX/bin/conda' 'shell.$MAMBA_SHELL' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
+    eval "$__conda_setup"
 else
     alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+    if [ -f "$MAMBA_ROOT_PREFIX/etc/profile.d/conda.sh" ]; then
+        . "$MAMBA_ROOT_PREFIX/etc/profile.d/conda.sh"
+    else
+        export PATH="$MAMBA_ROOT_PREFIX/bin:$PATH"
+    fi
 fi
 unset __mamba_setup
-# <<< mamba initialize <<<
+unset __conda_setup
+
 
 #
 ###############################################################################

@@ -238,17 +238,17 @@ fi
 #
 function load_mamba {
     if { mamba env list | grep "^py313"; } >/dev/null; then
-        mamba activate py313
+        conda activate py313
     elif { mamba env list | grep "^py312"; } >/dev/null; then
-        mamba activate py312
+        conda activate py312
     elif { mamba env list | grep "^py311"; } >/dev/null; then
-        mamba activate py311
+        conda activate py311
     elif { mamba env list | grep "^py310"; } >/dev/null; then
-        mamba activate py310
+        conda activate py310
     elif { mamba env list | grep "^py39"; } >/dev/null; then
-        mamba activate py39
+        conda activate py39
     elif { mamba env list | grep "base"; } >/dev/null; then
-        mamba activate base
+        conda activate base
     fi
 }
 if [[ "$quest_loginnode" == false ]]; then
