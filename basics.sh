@@ -145,9 +145,9 @@ unset __conda_setup
 #
 # Alias for Emacs on macOS due to bug with keyboard input not moving to window
 #
-if [ "$(uname)"=="Darwin" ]; then
-    alias emacs="emacs -nw"
-fi
+#if [ "$(uname)"=="Darwin" ]; then
+#    alias emacs="emacs -nw"
+#fi
 #
 #
 ###############################################################################
