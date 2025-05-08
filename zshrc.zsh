@@ -68,8 +68,8 @@ if [ "$(uname)"=="Darwin" ] && command -v brew >/dev/null 2>&1; then
 #
 #      Linux box
 #
-elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
-
+#elif [ "$(expr substr $(uname -s) 1 5)"=="Linux" ]; then
+else
     zstyle :compinstall filename "${HOME}/dotfiles/zshrc.zsh"
     autoload -Uz compinit
     compinit
