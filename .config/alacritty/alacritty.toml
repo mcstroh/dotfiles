@@ -5,7 +5,7 @@ TERM = "alacritty"
 size = 11.0
 
 [font.normal]
-family = "MesloLGS NF"
+family = "MesloLGS Nerd Font"
 style = "Regular"
 
 [[keyboard.bindings]]
