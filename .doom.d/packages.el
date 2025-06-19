@@ -51,5 +51,5 @@
 
 (package! beacon)
 (package! projectile)
-(package! magit)
+;(package! magit)
 (package! doom-themes)
