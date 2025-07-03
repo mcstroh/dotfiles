@@ -28,10 +28,18 @@ else
     export MAMBA_SHELL="bash"
 fi
 
+hostname=`hostname`
+hostname_short=`hostname | cut -c1-2`
+nm_node=false
+if [ "$hostname" = "gygax" ]; then
+    nm_node=true
+elif [ "$hostname_short" = "nm" ]; then
+    nm_node=true
+fi
+
 # Use Emacs as the default text editor
 export VISUAL=emacs
 export EDITOR="$VISUAL"
-
 
 # General extraction function
 function extract {
@@ -119,7 +127,13 @@ function decompress_pipeline {
 # Configure local mamba installation if it exists
 #
 # Reference $HOME, to work for local macOS and Linux installations
-export MAMBA_ROOT_PREFIX="$HOME/../data/miniforge3"
+if [ -d "$HOME/lustre" ]; then
+    export SOFTWARE_HOME="$HOME/lustre/software/"
+else
+    export SOFTWARE_HOME="$HOME/../data/"
+fi
+#export MAMBA_ROOT_PREFIX="$HOME/../data/miniforge3"
+export MAMBA_ROOT_PREFIX="$SOFTWARE_HOME/miniforge3"
 export MAMBA_EXE="$MAMBA_ROOT_PREFIX/bin/mamba"
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell $MAMBA_SHELL --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 __conda_setup="$('$MAMBA_ROOT_PREFIX/bin/conda' 'shell.$MAMBA_SHELL' 'hook' 2> /dev/null)"
@@ -148,6 +162,18 @@ unset __conda_setup
 #if [ "$(uname)"=="Darwin" ]; then
 #    alias emacs="emacs -nw"
 #fi
+#
+#
+###############################################################################
+
+###############################################################################
+#
+# NRAO configuration
+#
+if [ $nm_node ]; then
+    alias emacs="emacs -nw"
+    export PATH="$HOME/software/bin:$HOME/lustre/software/bin:$PATH"
+fi
 #
 #
 ###############################################################################
@@ -193,10 +219,6 @@ if [ -d $HOME/.juliaup/bin ]; then
 fi
 #
 ###############################################################################
-
-#if [ -d "/home/data/zed" ]; then
-#    alias zed="cd /home/data/zed;WAYLAND_DISPLAY='' cargo run --release"
-#fi
 
 # Force unmount
 alias fumnt="sudo umount -l"
