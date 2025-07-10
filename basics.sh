@@ -5,16 +5,12 @@
 # | |  | || |___ _   ___) | |_| | | (_) | | | |
 # |_|  |_(_)____(_) |____/ \__|_|  \___/|_| |_|
 #
-#  .default shell file catch-all for BASH/ZSH
+#  basics shell file catch-all for BASH/ZSH
 #
-# M. C. Stroh (michael.stroh@northwestern.edu)
+# M. C. Stroh (mstroh@nrao.edu)
 #
 #
 
-
-# Give us a long history
-set savehist=500000
-set history=500000
 
 # Aliases
 alias rm='rm -i'
@@ -172,7 +168,9 @@ unset __conda_setup
 #
 if [ $nm_node ]; then
     alias emacs="emacs -nw"
+    export PATH="$HOME/.config/emacs/bin:$PATH"
     export PATH="$HOME/software/bin:$HOME/lustre/software/bin:$PATH"
+    alias check-nodes="ssh nmpost-master $HOME/bin/check-compute-node.sh"
 fi
 #
 #

@@ -5,9 +5,9 @@
 # | |  | || |___ _   ___) | |_| | | (_) | | | |
 # |_|  |_(_)____(_) |____/ \__|_|  \___/|_| |_|
 #
-#  .default shell file catch-all for BASH/ZSH
+#  Default shell file catch-all for BASH/ZSH
 #
-# M. C. Stroh (michael.stroh@northwestern.edu)
+# M. C. Stroh (mstroh@nrao.edu)
 #
 #
 
@@ -43,9 +43,6 @@ fi
 #
 export TERM="xterm-256color" # getting colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
-set savehist=500000
-set history=500000
-
 
 # Use EMACS as default text editor
 export EDITOR="emacs"
