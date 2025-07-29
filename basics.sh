@@ -164,6 +164,16 @@ unset __conda_setup
 
 ###############################################################################
 #
+# Consolidated data bin directory for manual installations
+#
+if [ -d "${HOME}/../data/bin" ]; then
+    export PATH="${HOME}/../data/bin:${PATH}"
+fi
+#
+###############################################################################
+
+###############################################################################
+#
 # NRAO configuration
 #
 if [ $nm_node ]; then
