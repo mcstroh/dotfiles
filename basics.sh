@@ -193,18 +193,12 @@ fi
 #
 # FTOOLS/CALDB
 #
-if [ "$(uname)"=="Darwin" ] && [ -d "/Users/data/heasoft" ]; then
-    export HEADAS="/Users/data/heasoft"
-    . "$HEADAS/headas-init.sh"
-elif [ -d "/home/data/heasoft" ]; then
-    export HEADAS="/home/data/heasoft/x86_64-pc-linux-gnu-libc2.38"
+if [ -d "${HOME}/../data/heasoft" ] && [ -f "${HOME}/../data/heasoft/headas-init.sh" ]; then
+    export HEADAS="${HOME}/../data/heasoft"
     . "$HEADAS/headas-init.sh"
 fi
-if [ "$(uname)"=="Darwin" ] && [ -d "/Users/data/caldb" ] ; then
-    export CALDB="/Users/data/caldb"
-    . "$CALDB/software/tools/caldbinit.sh"
-elif [ -d "/home/data/caldb" ]; then
-    export CALDB="/home/data/caldb"
+if [ -d "${HOME}/../data/caldb" ] ; then
+    export CALDB="${HOME}/../data/caldb"
     . "$CALDB/software/tools/caldbinit.sh"
 fi
 #
