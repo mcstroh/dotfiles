@@ -10,6 +10,10 @@
 #
 #
 
+export HISTFILESIZE=10000
+export HISTSIZE=500
+export HISTTIMEFORMAT="%F %T"
+
 
 # fzf
 if command -v fzf >/dev/null 2>&1; then
@@ -20,3 +24,6 @@ fi
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init bash)"
 fi
+
+# BASH completion on macOS via brew
+[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
