@@ -12,7 +12,7 @@
 
 export HISTFILESIZE=10000
 export HISTSIZE=500
-export HISTTIMEFORMAT="%F %T"
+export HISTTIMEFORMAT="%F %T : "
 
 
 # fzf
