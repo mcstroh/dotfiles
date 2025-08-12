@@ -15,7 +15,7 @@
 #
 # Start with the CIERA bashrc file
 #
-QUEST_HOSTS="quser31 quser32 quser33 quser34"
+QUEST_HOSTS="quser31 quser32 quser33 quser34 quser41 quser42 quser43 quser44"
 hostname=`hostname`
 quest_loginnode=false
 for x in $QUEST_HOSTS; do
@@ -111,9 +111,9 @@ fi
 # Exa - Rust replacement for ls
 #
 if command -v eza >/dev/null 2>&1; then
-    alias ls='eza -al --color=always --group-directories-first --header' # Default
-    alias la='eza -a --color=always --group-directories-first --header'  # All but not long
-    alias ll='eza -l --color=always --group-directories-first --header'  # Long but not all
+    alias ls='eza -agl --color=always --group-directories-first --header' # Default
+    alias la='eza -ag --color=always --group-directories-first --header'  # All but not long
+    alias ll='eza -lg --color=always --group-directories-first --header'  # Long but not all
     alias lt='eza -aT --color=always --group-directories-first --header' # Tree format
     alias l.='eza -a | egrep "^\."'
 fi
