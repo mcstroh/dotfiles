@@ -8,6 +8,7 @@ server*
 
 # git config
 .gitconfig
+.gitconfig-nrao
 
 # Pycharm config
 .idea
