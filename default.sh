@@ -44,9 +44,6 @@ fi
 export TERM="xterm-256color" # getting colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
-# Use EMACS as default text editor
-export EDITOR="emacs"
-
 #
 ##########################################################################################
 
@@ -189,7 +186,9 @@ fi
 if [ -d "$HOME/.emacs.d/bin" ]; then
     export PATH="$HOME/.emacs.d/bin:$PATH"
 fi
-#alias emacs="emacs -nw"
+alias emacs="emacs -nw"
+export EDITOR="emacs -nw"
+export VISUAL="emacs -nw"
 #
 ##########################################################################################
 
