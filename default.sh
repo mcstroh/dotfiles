@@ -13,26 +13,9 @@
 
 ##########################################################################################
 #
-# Start with the CIERA bashrc file
+# Basic initialization
 #
-QUEST_HOSTS="quser31 quser32 quser33 quser34 quser41 quser42 quser43 quser44"
-hostname=`hostname`
-quest_loginnode=false
-for x in $QUEST_HOSTS; do
-    if [ "$hostname" = "$x" ]; then
-        quest_loginnode=true
-        break
-    fi
-done
-
-# If we're on Quest, use CIERA version
-if [ -f /projects/b1094/software/dotfiles/.bashrc ]; then
-    . /projects/b1094/software/dotfiles/.bashrc
-
-# If we're not on Quest, run the local version
-elif [ -f "$HOME/dotfiles/basics.sh" ]; then
-    . $HOME/dotfiles/basics.sh
-fi
+. "${HOME}/dotfiles/basics.sh"
 #
 ##########################################################################################
 
@@ -53,7 +36,7 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 # Server connections
 #
 if [ -f "$HOME/dotfiles/servers.sh" ]; then
-    . $HOME/dotfiles/servers.sh
+    ."${HOME}/dotfiles/servers.sh"
 fi
 #
 ##########################################################################################
@@ -64,7 +47,7 @@ fi
 # Brew package manager
 #    Need to load early due to later dependencies
 #
-if [ -f /opt/homebrew/bin/brew ]; then
+if [ -f "/opt/homebrew/bin/brew" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 #
@@ -82,9 +65,9 @@ if [ ! -z ${ZSH_VERSION+x} ]; then
     fi   
 
 else
-   # Assume BASH
-    if [ -f "$HOME/dotfiles/bashrc.sh" ]; then
-        . $HOME/dotfiles/bashrc.sh
+   # Assume Bash
+    if [ -f "${HOME}/dotfiles/bashrc.sh" ]; then
+        . "${HOME}/dotfiles/bashrc.sh"
     fi   
 
 fi
@@ -96,8 +79,8 @@ fi
 #
 # Rust
 #
-if [ -f "$HOME/.cargo/env" ]; then
-    . "$HOME/.cargo/env"
+if [ -f "${HOME}/.cargo/env" ]; then
+    . "${HOME}/.cargo/env"
 fi
 #
 ##########################################################################################
@@ -122,8 +105,8 @@ fi
 #
 # Broot - another file viewer
 #
-if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
-    . $HOME/.config/broot/launcher/bash/br
+if [ -f "${HOME}/.config/broot/launcher/bash/br" ]; then
+    . "${HOME}/.config/broot/launcher/bash/br"
 fi
 
 if command -v broot >/dev/null 2>&1; then
@@ -150,19 +133,8 @@ fi
 # Local CARTA installation
 #
 # If MacOS
-if [ -f /Applications/CARTA.app/Contents/MacOS/CARTA ]; then
-    alias carta='/Applications/CARTA.app/Contents/MacOS/CARTA'
-fi
-#
-##########################################################################################
-
-
-##########################################################################################
-#
-# Allocation statistics directory
-#
-if [ -d  "$HOME/allocation_data" ]; then
-    export ALLOCATION_DATA_DIR='/home/mcs8686/allocation_data'
+if [ -f "/Applications/CARTA.app/Contents/MacOS/CARTA" ]; then
+    alias carta="/Applications/CARTA.app/Contents/MacOS/CARTA"
 fi
 #
 ##########################################################################################
@@ -172,8 +144,8 @@ fi
 #
 # Configure BAaDE survey environment
 #
-if [ -f /projects/b1094/stroh/baade/setup.sh ]; then
-    . /projects/b1094/stroh/baade/setup.sh
+if [ -f "/projects/b1094/stroh/baade/setup.sh" ]; then
+    . "/projects/b1094/stroh/baade/setup.sh"
 fi
 #
 ##########################################################################################
@@ -183,8 +155,8 @@ fi
 #
 # Doom
 #
-if [ -d "$HOME/.emacs.d/bin" ]; then
-    export PATH="$HOME/.emacs.d/bin:$PATH"
+if [ -d "${HOME}/.emacs.d/bin" ]; then
+    export PATH="${HOME}/.emacs.d/bin:$PATH"
 fi
 alias emacs="emacs -nw"
 export EDITOR="emacs -nw"
@@ -197,9 +169,9 @@ export VISUAL="emacs -nw"
 #
 # MacPorts
 #
-if [ -d /opt/local/bin ]; then
-    export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-    export MANPATH="/opt/local/share/man:$MANPATH"
+if [ -d "/opt/local/bin" ]; then
+    export PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
+    export MANPATH="/opt/local/share/man:${MANPATH}"
 fi
 #
 ##########################################################################################
@@ -209,10 +181,8 @@ fi
 #
 # IDL
 #
-if [ -r /Applications/NV5/idl/bin/idl_setup.bash ] ; then
-    . /Applications/NV5/idl/bin/idl_setup.bash
-elif [ -r /Applications/harris/idl/bin/idl_setup.bash ] ; then
-    . /Applications/harris/idl/bin/idl_setup.bash
+if [ -r "/Applications/NV5/idl/bin/idl_setup.bash" ] ; then
+    . "/Applications/NV5/idl/bin/idl_setup.bash"
 fi
 #
 ##########################################################################################
@@ -232,24 +202,22 @@ fi
 #
 # Activate conda environment
 #
-function load_mamba {
-    if { mamba env list | grep "^py313"; } >/dev/null; then
+function load_conda {
+    if { conda env list | grep "^py313"; } >/dev/null; then
         conda activate py313
-    elif { mamba env list | grep "^py312"; } >/dev/null; then
+    elif { conda env list | grep "^py312"; } >/dev/null; then
         conda activate py312
-    elif { mamba env list | grep "^py311"; } >/dev/null; then
+    elif { conda env list | grep "^py311"; } >/dev/null; then
         conda activate py311
-    elif { mamba env list | grep "^py310"; } >/dev/null; then
+    elif { conda env list | grep "^py310"; } >/dev/null; then
         conda activate py310
-    elif { mamba env list | grep "^py39"; } >/dev/null; then
+    elif { conda env list | grep "^py39"; } >/dev/null; then
         conda activate py39
-    elif { mamba env list | grep "base"; } >/dev/null; then
+    elif { conda env list | grep "base"; } >/dev/null; then
         conda activate base
     fi
 }
-if [[ "$quest_loginnode" == false ]]; then
-    load_mamba
-fi
+load_conda
 
 ##########################################################################################
 
