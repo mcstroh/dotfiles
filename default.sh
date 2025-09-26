@@ -36,7 +36,7 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 # Server connections
 #
 if [ -f "$HOME/dotfiles/servers.sh" ]; then
-    ."${HOME}/dotfiles/servers.sh"
+    . "${HOME}/dotfiles/servers.sh"
 fi
 #
 ##########################################################################################
@@ -228,6 +228,17 @@ load_conda
 #
 if [ -d $HOME/.local/bin ]; then
     export PATH=$PATH:$HOME/.local/bin
+fi
+#
+##########################################################################################
+
+
+##########################################################################################
+#
+# Add support for user installed uv
+#
+if [ -d "${HOME}/.local/bin/env" ]; then
+    . $HOME/.local/bin/env
 fi
 #
 ##########################################################################################
