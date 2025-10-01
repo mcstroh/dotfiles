@@ -33,9 +33,6 @@ elif [ "$hostname_short" = "nm" ]; then
     nm_node=true
 fi
 
-# Use Emacs as the default text editor
-export VISUAL=emacs
-export EDITOR="$VISUAL"
 
 # General extraction function
 function extract {

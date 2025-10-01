@@ -159,8 +159,8 @@ if [ -d "${HOME}/.emacs.d/bin" ]; then
     export PATH="${HOME}/.emacs.d/bin:$PATH"
 fi
 alias emacs="emacs -nw"
-export EDITOR="emacs -nw"
-export VISUAL="emacs -nw"
+export EDITOR="emacs"
+export VISUAL="emacs"
 #
 ##########################################################################################
 
