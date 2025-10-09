@@ -203,7 +203,9 @@ fi
 # Activate conda environment
 #
 function load_conda {
-    if { conda env list | grep "^py313"; } >/dev/null; then
+    if { conda env list | grep "^py314"; } >/dev/null; then
+        conda activate py314
+    elif { conda env list | grep "^py313"; } >/dev/null; then
         conda activate py313
     elif { conda env list | grep "^py312"; } >/dev/null; then
         conda activate py312
