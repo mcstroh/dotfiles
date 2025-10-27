@@ -174,13 +174,7 @@ fi
 # NRAO configuration
 #
 if [ $nm_node ]; then
-    alias emacs="emacs -nw"
-    export PATH="$HOME/.config/emacs/bin:$PATH"
-    export PATH="$HOME/software/bin:$HOME/lustre/software/bin:$PATH"
-    export PATH="$HOME/lustre/software/texlive/2025/bin/x86_64-linux:$PATH"
-    export MANPATH="${MANPATH}:/users/mstroh/lustre/software/texlive/2025/texmf-dist/doc/man"
-    export INFOPATH="${INFOPATH}:/users/mstroh/lustre/software/texlive/2025/texmf-dist/doc/info"
-    alias check-nodes="ssh nmpost-master $HOME/bin/check-compute-node.sh"
+  . "${HOME}/dotfiles/nrao.sh"
 fi
 #
 #
