@@ -25,5 +25,10 @@ if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init bash)"
 fi
 
+# Starship
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+fi
+
 # BASH completion on macOS via brew
 [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
