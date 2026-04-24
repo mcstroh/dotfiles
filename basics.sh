@@ -18,6 +18,7 @@ alias ssh='ssh -X'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
 alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
 
+
 if [ ! -z ${ZSH_VERSION+x} ]; then
     export MAMBA_SHELL="zsh"
 else
@@ -98,10 +99,10 @@ function up {
 }
 
 
-function tar_and_rm {
+function cr {
     dir="$1"
     if [ -d "$dir" ]; then
-        tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir" || rm -rf "${dir}.tar.gz";
+        tar -czf "${dir}.tar.gz" "$dir" && rm -rf "$dir" || rm -f "${dir}.tar.gz";
     fi
 }
 
