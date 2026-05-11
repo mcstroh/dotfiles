@@ -17,6 +17,7 @@ alias rm='rm -i'
 alias ssh='ssh -X'
 alias cdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file"; fi; done'
 alias crdirs='for file in *; do if [ -d "$file" ]; then tar -czf "${file}.tar.gz" "$file" && rm -rf "$file" || rm -rf "${file}.tar.gz"; fi; done'
+alias crsubdirs='for dir in *; do if [ -d "$dir" ]; then cd "${dir}"; crdirs; cd ..; fi; done'
 
 
 if [ ! -z ${ZSH_VERSION+x} ]; then
