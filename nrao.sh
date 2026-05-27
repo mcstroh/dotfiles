@@ -17,6 +17,9 @@ export PATH="$HOME/software/bin:$HOME/lustre/software/bin:$PATH"
 export PATH="$HOME/lustre/software/texlive/2025/bin/x86_64-linux:$PATH"
 export MANPATH="${MANPATH}:/users/mstroh/lustre/software/texlive/2025/texmf-dist/doc/man"
 export INFOPATH="${INFOPATH}:/users/mstroh/lustre/software/texlive/2025/texmf-dist/doc/info"
+# These will be used for CASA slurm jobs
+export CASADIR="/home/casa/packages/RHEL8/release"
+export CASAPATH="${CASADIR}/casa-6.7.5-18-py3.12.el8"
 
 # Aliases
 alias check-nodes="ssh nmpost-master $HOME/bin/check-compute-node.sh"
