@@ -276,28 +276,6 @@ if [ -f $HOME/../data/swc-shell-split-window/swc-shell-split-window.sh ]; then
     alias tutorial="$HOME/../data/swc-shell-split-window/swc-shell-split-window.sh"
 fi
 
-function nodes {
-    srun --account=b1094 -N 1 -n 1 --partition=ciera-himem --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
-}
-
-function nodes2 {
-    srun --account=b1094 -N 1 -n 1 --partition=ciera-std --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
-}
-
-function baade_node {
-    srun --account=b1094 -N 1 -n 1 --partition=ciera-std --time=14-00:00:00 --mem=50G --job-name="specialist" --x11 --pty bash -l
-}
-
-function specialist_node {
-    srun --account=b1094 -N 1 --exclusive --partition=ciera-specialist --time=14-00:00:00 --job-name="specialist" --x11 --pty bash -l
-}
-
-function fix_permissions {
-    chmod -R go-w /projects/b1094/software/miniforge3
-    chmod -R go+rX /projects/b1094/software/miniforge3
-    chmod -R go-w /projects/b1094/software/environments
-    chmod -R go+rX /projects/b1094/software/environments
-}
 
 function checksum {
     if [ -z "$1" ] || [ ! "$1" = "md5" ]; then
@@ -305,4 +283,31 @@ function checksum {
     else
 	find -type f -exec md5sum "{}" + > checksum.md5
     fi
+}
+
+
+function concat_csv {
+
+    FINAL_FILENAME='merged.csv'
+    if [[ -f ${FINAL_FILENAME} ]]; then
+        echo "Removing ${FINAL_FILENAME}"
+        rm -f ${FINAL_FILENAME}
+    fi
+
+    MERGED_FILENAME='merged.tmp'
+    CSV_FILES="*.csv"
+    for f in ${CSV_FILES}; do
+        echo "head: ${f}"
+        head -1 $f > ${MERGED_FILENAME}
+        break
+    done
+
+    for f in ${CSV_FILES}; do
+        echo "tail: ${f}"
+        tail -n +2 $f >> ${MERGED_FILENAME}
+    done
+
+    echo "Saving output as ${FINAL_FILENAME}"
+    mv ${MERGED_FILENAME} ${FINAL_FILENAME}
+
 }
